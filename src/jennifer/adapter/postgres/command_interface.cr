@@ -55,7 +55,7 @@ module Jennifer
       end
 
       private def default_env_variables
-        env = {"PGPASSWORD" => config.password} of String => Command::Option
+        env = {"PGPASSWORD" => URI.decode(config.password)} of String => Command::Option
         env["PGPORT"] = config.port.to_s unless config.port == -1
         env
       end
